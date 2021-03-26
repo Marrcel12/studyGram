@@ -2,4 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.index, name='index')]
+    path('', views.start, name='start'),
+    path('<slug:category>', views.start, name='start')
+
+]

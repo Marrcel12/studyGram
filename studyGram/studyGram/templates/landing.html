@@ -1,0 +1,10 @@
+<form type="POST" action="/marketplace" style="margin: 0">
+  {% csrf_token %}
+  <input
+    id="search_box"
+    type="text"
+    name="search_box"
+    placeholder="Search..."
+  />
+  <button id="search_submit" type="submit">Submit</button>
+</form>

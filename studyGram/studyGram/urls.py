@@ -24,6 +24,8 @@ urlpatterns = [
     path('marketplace/', include('marketplace.urls')),
     path('profiles/', include('profiles.urls')),
     path('auth/', include('register.urls')),
-    path('creator/', include('creator_panel.urls'))
+    path('creator/', include('creator_panel.urls')),
+    path('djrichtextfield/', include('djrichtextfield.urls'))
+
 
 ]
