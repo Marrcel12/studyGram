@@ -2,4 +2,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world, on landing Page")
+    # TODO:Starting page
+    return HttpResponse("Hello, world, on landing Main Page")

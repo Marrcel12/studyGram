@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('marketplace/', include('marketplace.urls')),
+    path('profiles/', include('profiles.urls')),
+    path('auth/', include('register.urls')),
+    path('creator/', include('creator_panel.urls'))
+
 ]
