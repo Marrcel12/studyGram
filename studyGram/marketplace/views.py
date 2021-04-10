@@ -1,11 +1,18 @@
 from django.http import HttpResponse
-
+from django.shortcuts import render
+from .forms import SearchForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
 
-def start(request, category=None):
-    # TODO:views with category
-    if category:
-        return HttpResponse("Hello, world, on marketplace  "+str(category))
-    return HttpResponse("Hello, world, on marketplace")
+def start(request):
+    context = {"search":None}
+    if request.method == 'POST':
+        
+        context["search"] = request.POST['search']
+        form = SearchForm(request.POST)    
+    else:
+        form = SearchForm() 
+    context["form"] = form  
+    return render(request, 'index.html', context)   

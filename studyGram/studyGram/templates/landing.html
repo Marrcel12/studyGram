@@ -1,31 +1,31 @@
-{%block content %}
-<form type="POST" action="/marketplace" style="margin: 0">
-  {% csrf_token %}
-  <input
-    id="search_box"
-    type="text"
-    name="search_box"
-    placeholder="Search..."
-  />
-  <button id="search_submit" type="submit">Submit</button>
+{%block content %} 
+
+<form action="/marketplace/" method="post">
+{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
 </form>
 <h1>PRODUCT</h1>
 <!-- list of 6 best products (check views.py file to change the number) -->
 <ul>
-  {% for product in best_products %} {% for key, value in product.items %}
-  <li>{{key}}<br />{{value}}</li>
+  {% for product in best_products %} 
+    {% for key, value in product.items %}
+      <li>{{key}}<br />{{value}}</li>
 
-  {% endfor %} {% endfor %}
+    {% endfor %} 
+  {% endfor %}
 </ul>
 <hr />
 <!-- list of 6 best products (check views.py file to change the number) -->
 <h1>PROFILE</h1>
 <!-- list of 3 most popular profiles (check views.py file to change the number) -->
 <ul>
-  {% for profile in popular_profiles %} {% for key_prof, value_prof in profile.items %}
-  <li>{{key_prof}}<br />{{value_prof}}</li>
+  {% for profile in popular_profiles %} 
+    {% for key_prof, value_prof in profile.items %}
+      <li>{{key_prof}}<br />{{value_prof}}</li>
 
-  {% endfor %} {% endfor %}
+    {% endfor %} 
+  {% endfor %}
 </ul>
 <hr />
 {%endblock content%}

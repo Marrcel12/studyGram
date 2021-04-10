@@ -1,11 +1,18 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .forms import SearchForm
+# query
 from marketplace.models import product, raiting_products, raitings_to_product
 from profiles.models import profile, raitings_to_users
 
 
 def index(request):
-    context = {}
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+    else:
+        form = SearchForm()
+
+    context = {"form":form}
     # products
     ids_best_review = raiting_products.objects.order_by(
         "value_number").values('id_raiting')[::-1]

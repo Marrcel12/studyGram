@@ -13,7 +13,7 @@ class profile(models.Model):
     is_creator = models.BooleanField(default=False)
     facebook_social = models.CharField(max_length=180, blank=True)
     instagram_social = models.CharField(max_length=180, blank=True)
-
+    is_creator_of_month=models.BooleanField(default=False)
     def __str__(self):
         return self.username
 

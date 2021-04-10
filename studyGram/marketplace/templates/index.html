@@ -1,0 +1,10 @@
+{%block content %} 
+
+<form action="/marketplace/" method="post">
+{% csrf_token %}
+    {{ form }}
+    {{search}}
+    <input type="submit" value="Submit" />
+</form> 
+
+{%endblock content%}
