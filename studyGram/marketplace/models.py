@@ -78,10 +78,14 @@ class level_subject_topic_product(models.Model):
 
 class raiting_products(models.Model):
     id_raiting = models.AutoField(primary_key=True)
-    value = models.CharField(max_length=30, null=True)
+    value_text = models.CharField(max_length=30, null=True)
+    value_number = models.IntegerField(choices=list(
+        zip(range(1, 10), range(1, 10))), unique=True)
+    id_user = models.ForeignKey(
+        profile, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
-        return self.value
+        return self.value_text
 
 
 class raitings_to_product(models.Model):
