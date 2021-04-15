@@ -1,8 +1,15 @@
 from django.db import models
 from djrichtextfield.models import RichTextField
 from profiles.models import profile
+from django.db import migrations
+from django.contrib.postgres.operations import TrigramExtension
 
-
+class Migration(migrations.Migration):
+    ...
+    operations = [
+        TrigramExtension(),
+        ...
+    ]
 class product(models.Model):
     product_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=80)
@@ -41,7 +48,7 @@ class level(models.Model):
     slug = models.SlugField(null=True)
 
     def __str__(self):
-        return self.slug
+        return self.name
 
 
 class subject(models.Model):
@@ -50,7 +57,7 @@ class subject(models.Model):
     slug = models.SlugField(null=True)
 
     def __str__(self):
-        return self.slug
+        return self.name
 
 
 class topic(models.Model):
@@ -59,7 +66,7 @@ class topic(models.Model):
     name = models.CharField(max_length=30, blank=False)
 
     def __str__(self):
-        return self.slug
+        return self.name
 
 
 class subject_topic(models.Model):

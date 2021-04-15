@@ -1,6 +1,6 @@
 {%block content %} 
 
-<form action="/marketplace/" method="post">
+<form action="/marketplace/" method="get">
 {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit" />

@@ -1,10 +1,35 @@
-{%block content %} 
+{%block content %}
 
 <form action="/marketplace/" method="post">
 {% csrf_token %}
-    {{ form }}
-    {{search}}
-    <input type="submit" value="Submit" />
-</form> 
+
+    <input type="text" name="search" value="">
+
+    <select id="level" name="levels">
+        {% for level in levels %} 
+            <option value={{level.id_level}}>{{level.name}}</option>
+        {% endfor %}
+    </select> 
+
+<select id="subject" name="subjects">
+  {% for subject in subjects %} 
+      <option value={{subject.id_subject}}>{{subject.name}}</option>
+  {% endfor %}
+</select>
+<select id="topic" name="topics">
+  {% for topic in topics %} 
+    <option value={{topic.id_topic}}>{{topic.name}}</option>
+  {% endfor %}
+</select> 
+
+<input type="submit">
+</form>
+
+<hr />
+<h1>Value to search:</h1>
+{% if search %}
+    {{search}} 
+{% endif %}
+
 
 {%endblock content%}
