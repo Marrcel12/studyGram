@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+}
+
+nav{
+    position: fixed;
+    width: 100vw;
+    height: 104px;
+}
+header{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../img/headerImg.png');
+    background-size: cover;
+    background-position: left bottom;
+}

@@ -1,4 +1,34 @@
-{%block content %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>studyGram</title>
+  <link rel="stylesheet" href="{% static 'css/defineFonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+ {%block header %}
+ <nav>
+     <div class="pages"></div>
+     <div class="login">
+         <button>Zaloguj się</button>
+         <button>Zarejestruj się</button>
+     </div>
+ </nav>
+ <header>
+     <div class="headerText">
+         <p>Najlepsze notatki</p>
+         <p>W zasięgu ręki</p>
+     </div>
+     <div class="searchField">
+         <input type="text" placeholder="Czego dzisiaj się uczysz?" required>
+     </div>
+     <div class="scrollDown"></div>
+ </header>
+ {%endblock header %}
+  {%block content %} 
 
 <form action="/marketplace/" method="get">
 {% csrf_token %}
@@ -29,3 +59,7 @@
 </ul>
 <hr />
 {%endblock content%}
+{%block footer %}
+ {%endblock footer %}
+</body>
+</html>
