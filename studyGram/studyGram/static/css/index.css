@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    font-family:'NunitoSans';
 }
 
 nav{
@@ -13,4 +14,49 @@ header{
     background-image: url('../img/headerImg.png');
     background-size: cover;
     background-position: left bottom;
+}
+.headerText{
+    
+    text-transform: uppercase;
+    font-size: 5vh;
+    color: white;
+    text-align: right;
+}
+.headerText>p{
+    
+    position: absolute;
+    right: 4vw;
+    padding: 5px;
+    padding-right: 4vw;
+}
+.headerText>p:first-of-type{
+background-color: rgba(206, 108, 102, 0.77);
+width: fit-content;
+top: 25vh;
+font-family: "Milliard Book";
+}
+.headerText>p:last-of-type{
+    background-color: rgba(213, 125, 116, 0.46);
+    width: fit-content;
+    top:calc(31vh + 10px);
+    font-family: "Milliard Book";
+}
+.searchField{
+    position: relative;
+    top: 60vh;
+    width: calc(100% - 6vw);
+    padding: 0 3vw;
+    max-width: 950px;
+    margin: 0 auto;
+
+}
+.searchField input{
+    font-family: "Milliard Light";
+    width: 100%;
+    font-size: 23px;
+    padding: 5px;
+    border-radius: 28px;
+    outline: none;
+    padding-left: 90px;
+    box-sizing: border-box;
 }
