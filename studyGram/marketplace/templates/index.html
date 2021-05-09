@@ -7,37 +7,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>studyGram</title>
     <link rel="stylesheet" href="{% static 'css/defineFonts.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/marketplace.css' %}">
 </head>
 
 <body>
+  {%block header%}
+  <nav>
+    <div class="empty"></div>
+    <div class="pages">
+        <img src="{% static 'img\svg\Icon material-people.svg' %}" alt="">
+        <img src="{% static 'img\svg\icons8-search-50.svg' %}" alt="">
+        <img src="{% static 'img\svg\shopping-bag-solid.svg' %}" alt="">
+    </div>
+</nav>
+  {%endblock header%}
     {%block content %}
-    <form action="/marketplace/" method="post">
-        {% csrf_token %}
-        <input type="text" name="search" value="">
-        <select id="level" name="levels">
-            {% for level in levels %}
-            <option value={{level.id_level}}>{{level.name}}</option>
+      <div id="content">
+        <div class="filterPanel">
+          <form action="/marketplace/" method="post">
+            {% csrf_token %}
+            <div class="inputWrap">
+              <input type="text" name="search" value="" placeholder="Wpisz wyszukiwany tekst">
+            </div>
+            <div class="inputWrap">
+              <select id="level" name="levels">
+                {% for level in levels %}
+                <option value={{level.id_level}}>{{level.name}}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div class="inputWrap">
+              <select id="subject" name="subjects">
+                {% for subject in subjects %}
+                <option value={{subject.id_subject}}>{{subject.name}}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div class="inputWrap">
+              <select id="topic" name="topics">
+                {% for topic in topics %}
+                <option value={{topic.id_topic}}>{{topic.name}}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div class="inputWrap">
+              <button type="submit">Filtruj</button>
+            </div>
+        </form>
+        <!-- <h1>Value to search:</h1>
+        {% if search %}
+        {{search}}
+        {% endif %} -->
+        </div>
+        <div class="products">
+
+          <div class="productCardsContainer">
+            {% for product in search_result %}
+            <div class="productCard">
+                <div class="productThumbnail">
+                    <img src="{% static 'thumbnails_products/pobrane.jpg' %}" alt="">
+                </div>
+                <div class="productContents">
+                    <div class="like">
+                        <img src="{% static 'img/svg/heart-regular.svg' %}" alt="">
+                    </div>
+                    <p class="productTitle">{{product.title}}</p>
+                    <p class="productAuthor">@{{product.profile_id_id}}</p>
+                    <!-- Tu będzie nazwa^^ -->
+                    <p class="productDecription">{{product.description}}</p>
+                    <div class="rating"></div>
+                    <div class="bestseller">BESTSELLER</div>
+                    <div class="price">{{product.price}} PLN</div>
+                </div>
+            </div>
             {% endfor %}
-        </select>
-        <select id="subject" name="subjects">
-            {% for subject in subjects %}
-            <option value={{subject.id_subject}}>{{subject.name}}</option>
-            {% endfor %}
-        </select>
-        <select id="topic" name="topics">
-            {% for topic in topics %}
-            <option value={{topic.id_topic}}>{{topic.name}}</option>
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-    <hr />
-    <h1>Value to search:</h1>
-    {% if search %}
-    {{search}}
-    {% endif %}
+        </div>
+
+        </div>
+        <div class="authors"></div>
+      </div>
     {%endblock content%}
+    {%block footer%}
+    <footer>
+      <div>
+          <p>O nas</p>
+          <p>Regulamin</p>
+          <p>Polityka prywatności</p>
+          <p>Kontakt</p>
+          <p>Oferty</p>
+      </div>
+  </footer>
+  {%endblock footer%}
 </body>
 
 </html>
