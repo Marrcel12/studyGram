@@ -1,65 +1,103 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>studyGram</title>
-  <link rel="stylesheet" href="{% static 'css/defineFonts.css' %}">
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>studyGram</title>
+    <link rel="stylesheet" href="{% static 'css/defineFonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
+
 <body>
- {%block header %}
- <nav>
-     <div class="pages"></div>
-     <div class="login">
-         <button>Zaloguj się</button>
-         <button>Zarejestruj się</button>
-     </div>
- </nav>
- <header>
-     <div class="headerText">
-         <p>Najlepsze notatki</p>
-         <p>W zasięgu ręki</p>
-     </div>
-     <div class="searchField">
-         <input type="text" placeholder="Czego dzisiaj się uczysz?" required>
-     </div>
-     <div class="scrollDown"></div>
- </header>
- {%endblock header %}
-  {%block content %} 
-
-<form action="/marketplace/" method="get">
-{% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
-</form>
-<h1>PRODUCT</h1>
-<!-- list of 6 best products (check views.py file to change the number) -->
-<ul>
-  {% for product in best_products %} 
-    {% for key, value in product.items %}
-      <li>{{key}}<br />{{value}}</li>
-
-    {% endfor %} 
-  {% endfor %}
-</ul>
-<hr />
-<!-- list of 6 best products (check views.py file to change the number) -->
-<h1>PROFILE</h1>
-<!-- list of 3 most popular profiles (check views.py file to change the number) -->
-<ul>
-  {% for profile in popular_profiles %} 
-    {% for key_prof, value_prof in profile.items %}
-      <li>{{key_prof}}<br />{{value_prof}}</li>
-
-    {% endfor %} 
-  {% endfor %}
-</ul>
-<hr />
-{%endblock content%}
-{%block footer %}
- {%endblock footer %}
+    <div id="bg"></div>
+    {%block header %}
+    <nav>
+        <div class="empty"></div>
+        <div class="pages">
+            <img src="{% static 'img\svg\Icon material-people.svg' %}" alt="">
+            <img src="{% static 'img\svg\icons8-search-50.svg' %}" alt="">
+            <img src="{% static 'img\svg\Icon awesome-shopping-bag.svg' %}" alt="">
+        </div>
+        <div class="login">
+            <button>Zaloguj się</button>
+            <button>Zarejestruj się</button>
+        </div>
+    </nav>
+    <header>
+        <div class="headerText">
+            <p>Najlepsze notatki</p>
+            <p>W zasięgu ręki</p>
+        </div>
+        <div class="searchField">
+            <form action="/marketplace/" method="get" class="searchFieldForm">
+                {% csrf_token %}
+                <img src="{% static 'img\svg\icons8-search-50.svg' %}" onclick="submitForm()">
+                {{ form }}
+            </form>
+        </div>
+        <div class="scrollDown">
+            <img src="{% static 'img\svg\Icon ionic-ios-arrow-down.svg' %}" alt="">
+        </div>
+    </header>
+    {%endblock header %}
+    {%block content %}
+    <section>
+        <h2>Ucz się szybko i efektywnie z notatek naszych niesamowitych twórców</h2>
+        <!-- list of 6 best products (check views.py file to change the number) -->
+        <div class="productCardsContainer">
+            {% for product in best_products %}
+            <div class="productCard">
+                <div class="productThumbnail">
+                    <img src="{% static 'thumbnails_products/pobrane.jpg' %}" alt="">
+                </div>
+                <div class="productContents">
+                    <div class="like">
+                        <img src="{% static 'img/svg/heart-regular.svg' %}" alt="">
+                    </div>
+                    <p class="productTitle">{{product.title}}</p>
+                    <p class="productAuthor">@{{product.profile_id_id}}</p>
+                    <!-- Tu będzie nazwa^^ -->
+                    <p class="productDecription">{{product.description}}</p>
+                    <div class="rating"></div>
+                    <div class="bestseller">BESTSELLER</div>
+                    <div class="price">{{product.price}} PLN</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- list of 6 best products (check views.py file to change the number) -->
+    <div id="divider"></div>
+    <section>
+        <h2>Poznaj naszych twórców</h2>
+        <!-- list of 3 most popular profiles (check views.py file to change the number) -->
+        <div class="profileCardsContainer">
+            {% for profile in popular_profiles %}
+            <div class="profileCard">
+                <div class="profileThumbnail">
+                    <img src="{% static 'thumbnails_users/NAT_gateway.png' %}" alt="">
+                </div>
+                <p class="profileTitle">@{{profile.username}}</p>
+                <p class="profileDescription">{{profile.description}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {%endblock content%}
+    {%block footer %}
+    <footer>
+        <div>
+            <p>O nas</p>
+            <p>Regulamin</p>
+            <p>Polityka prywatności</p>
+            <p>Kontakt</p>
+            <p>Oferty</p>
+        </div>
+    </footer>
+    {%endblock footer %}
+    <script src="{% static 'js/landing.js' %}"> </script>
 </body>
+
 </html>

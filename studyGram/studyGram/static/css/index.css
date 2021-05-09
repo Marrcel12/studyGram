@@ -1,56 +1,94 @@
-*{
+* {
     margin: 0;
-    font-family:'NunitoSans';
+    font-family: 'Lato';
+    /* Tu nunito */
 }
 
-nav{
-    position: fixed;
-    width: 100vw;
-    height: 104px;
+body > *:not(header, nav, #divider, footer) {
+    background-color: white;
 }
-header{
+
+body {
+    /* overflow-x: hidden; */
+}
+
+h2 {
+    font-family: "Lato Light";
+    /* Nunito */
+    text-align: center;
+    font-weight: lighter;
+    padding: 40px 0;
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    padding-top: 10px;
+}
+
+#bg {
     height: 100vh;
     width: 100%;
     background-image: url('../img/headerImg.png');
     background-size: cover;
     background-position: left bottom;
+    position: fixed;
+    z-index: -1;
 }
-.headerText{
-    
+
+header {
+    height: 100vh;
+    width: 100%;
+}
+
+.headerText {
     text-transform: uppercase;
     font-size: 5vh;
     color: white;
     text-align: right;
 }
-.headerText>p{
-    
+
+.headerText > p {
     position: absolute;
     right: 4vw;
     padding: 5px;
     padding-right: 4vw;
 }
-.headerText>p:first-of-type{
-background-color: rgba(206, 108, 102, 0.77);
-width: fit-content;
-top: 25vh;
-font-family: "Milliard Book";
-}
-.headerText>p:last-of-type{
-    background-color: rgba(213, 125, 116, 0.46);
+
+.headerText > p:first-of-type {
+    background-color: rgba(206, 108, 102, 0.77);
     width: fit-content;
-    top:calc(31vh + 10px);
+    top: 25vh;
     font-family: "Milliard Book";
 }
-.searchField{
+
+.headerText > p:last-of-type {
+    background-color: rgba(213, 125, 116, 0.46);
+    width: fit-content;
+    top: calc(31vh + 10px);
+    font-family: "Milliard Book";
+}
+
+.searchField {
     position: relative;
     top: 60vh;
     width: calc(100% - 6vw);
     padding: 0 3vw;
     max-width: 950px;
     margin: 0 auto;
-
 }
-.searchField input{
+
+.searchField img {
+    position: absolute;
+    top: 5px;
+    left: 5vw;
+    cursor: pointer;
+}
+
+.searchField input {
     font-family: "Milliard Light";
     width: 100%;
     font-size: 23px;
@@ -59,4 +97,229 @@ font-family: "Milliard Book";
     outline: none;
     padding-left: 90px;
     box-sizing: border-box;
+    border: 2px solid black;
+}
+
+.scrollDown {
+    text-align: center;
+    position: absolute;
+    bottom: 3vh;
+    width: 100%;
+}
+
+.scrollDown img {
+    cursor: pointer;
+}
+
+.pages {
+    text-align: center;
+}
+
+.pages > img {
+    margin: 0 20px;
+    cursor: pointer;
+    transition: .15s linear;
+}
+
+.pages > img:hover {
+    transform: rotate(15deg);
+}
+
+.login {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.login button {
+    text-transform: uppercase;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bold;
+    height: 25px;
+    width: 150px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-family: "Lato";
+    transition: .3s linear;
+}
+
+.login button:hover {
+    filter: opacity(.7);
+}
+
+#divider {
+    width: 100%;
+    height: 100px;
+}
+
+section {
+    display: flex;
+    /* establish flex container */
+    flex-direction: column;
+    /* stack flex items vertically */
+    justify-content: center;
+    height: 100vh;
+}
+
+.profileCardsContainer,
+.productCardsContainer {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding-bottom: 50px;
+}
+
+.profileCard {
+    display: grid;
+    grid-template-columns: 100px auto 65%;
+    padding: 40px 0;
+}
+
+.profileThumbnail {
+    display: flex;
+    /* establish flex container */
+    flex-direction: column;
+    /* stack flex items vertically */
+    justify-content: center;
+    /* center items vertically, in this case */
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid #E69D90;
+}
+
+.profileThumbnail > img {
+    max-height: 100px;
+    /* to fix in future */
+}
+
+.profileTitle,
+.profileDescription {
+    display: flex;
+    /* establish flex container */
+    flex-direction: column;
+    /* stack flex items vertically */
+    justify-content: center;
+}
+
+.profileDescription {
+    padding-left: 20px;
+}
+
+.profileTitle {
+    border-right: 2px solid rgba(0, 0, 0, .3);
+    padding-left: 30px;
+    font-family: 'Milliard SemiBold';
+    font-size: 20px;
+}
+
+footer {
+    height: 200px;
+}
+
+footer > div {
+    position: relative;
+    height: 30;
+    top: 150px;
+    display: grid;
+    margin: 0 auto;
+    max-width: 1000px;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+footer p {
+    text-align: center;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+footer p:hover {
+    color: white;
+}
+
+.productCard {
+    height: 200px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    max-width: 1200px;
+    border: 2px solid #E69D90;
+    margin: 30px 0;
+    border-radius: 10px;
+    padding: 2.5px;
+    box-sizing: border-box;
+}
+
+.productThumbnail {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 190px;
+    width: 190px;
+    display: flex;
+    /* establish flex container */
+    flex-direction: column;
+    /* stack flex items vertically */
+    justify-content: center;
+    /* center items vertically, in this case */
+    align-items: center;
+}
+
+.productThumbnail img {
+    height: 190px;
+}
+
+.productContents {
+    position: relative;
+}
+
+.productContents > * {
+    font-family: 'Milliard Medium';
+}
+
+.productAuthor {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.productTitle,
+.productDecription {
+    font-size: 14px;
+    margin-right: 50px;
+}
+
+.price {
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+    font-size: 20px;
+}
+
+.bestseller {
+    color: white;
+    background-color: #E69D90;
+    padding: 5px 15px;
+    text-align: center;
+    width: 120px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 150px;
+}
+
+.like img {
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    transition: .3s linear;
+}
+
+.like > img:hover {
+    filter: opacity(.7)
 }

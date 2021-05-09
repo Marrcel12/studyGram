@@ -25,7 +25,8 @@ urlpatterns = [
     path('profiles/', include('profiles.urls')),
     path('auth/', include('register.urls')),
     path('creator/', include('creator_panel.urls')),
-    path('djrichtextfield/', include('djrichtextfield.urls'))
+    path('djrichtextfield/', include('djrichtextfield.urls')),
+    # path('thumbnails_users/')
 
 
 ]

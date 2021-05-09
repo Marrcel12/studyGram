@@ -17,7 +17,7 @@ def index(request):
     ids_best_review = raiting_products.objects.order_by(
         "value_number").values('id_raiting')[::-1]
     # change here number of best products
-    ids_best_review = ids_best_review[:6]
+    ids_best_review = ids_best_review[:3]
 
     ids_best_products = []
     for i in ids_best_review:
@@ -54,4 +54,5 @@ def index(request):
         tmp_profile['description'] = tmp_profile['description'][:180]
         context["popular_profiles"].append(tmp_profile)
 
+    print(context['best_products'][0])
     return render(request, 'landing.html', context)

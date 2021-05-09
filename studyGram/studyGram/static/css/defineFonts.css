@@ -123,29 +123,29 @@
     font-family: 'NunitoSans-Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('NunitoSans-'), url('../font/NunitoSans-Bold.ttf') format('ttf');
+    src: local('NunitoSans-Bold'), url('../font/NunitoSans-Bold.ttf') format('ttf');
     }
 @font-face {
     font-family: 'NunitoSans-ExtraLight';
     font-style: normal;
     font-weight: normal;
-    src: local('NunitoSans-'), url('../font/NunitoSans-ExtraLight.ttf') format('ttf');
+    src: local('NunitoSans-ExtraLight'), url('../font/NunitoSans-ExtraLight.ttf') format('ttf');
     }
 @font-face {
     font-family: 'NunitoSans-Light';
     font-style: normal;
     font-weight: normal;
-    src: local('NunitoSans-'), url('../font/NunitoSans-Light.ttf') format('ttf');
+    src: local('NunitoSans-Light'), url('../font/NunitoSans-Light.ttf') format('ttf');
     }
 @font-face {
     font-family: 'NunitoSans';
     font-style: normal;
     font-weight: normal;
-    src: local('NunitoSans-'), url('../font/NunitoSans.ttf') format('ttf');
+    src: local('NunitoSans'), url('../font/NunitoSans.ttf') format('ttf');
     }
 @font-face {
     font-family: 'NunitoSans-SemiBold';
     font-style: normal;
     font-weight: normal;
-    src: local('NunitoSans-'), url('../font/NunitoSans-SemiBold.ttf') format('ttf');
+    src: local('NunitoSans-SemiBold'), url('../font/NunitoSans-SemiBold.ttf') format('ttf');
     }
