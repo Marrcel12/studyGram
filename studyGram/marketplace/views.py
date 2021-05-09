@@ -38,8 +38,8 @@ def start(request):
             part_string=search_value[:int(len(search_value)/2)]
             search_res = product.objects.filter(
                 (Q(title__trigram_similar=search_value)| Q(description__trigram_similar=search_value) | Q( description__contains=part_string) | Q( title__contains=part_string)| Q( tags__contains=part_string)))
-            # context["search_result"]=best_products(15, 100) #design purposes
-            context["search_result"]=search_res
+            context["search_result"]=best_products(15, 150) #design purposes
+            # context["search_result"]=search_res
         else:
             context["search_result"]= best_products(15, 100)
     elif request.method == 'POST':

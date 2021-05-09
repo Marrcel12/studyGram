@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 * {
     margin: 0;
     font-family: 'Lato';
@@ -25,7 +28,7 @@ nav {
     width: 100%;
     height: 50px;
     display: grid;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 32.5% 35% 32.5%;
     padding-top: 10px;
 }
 
@@ -182,7 +185,6 @@ section {
     display: flex;
     /* establish flex container */
     flex-direction: column;
-    /* stack flex items vertically */
     justify-content: center;
     /* center items vertically, in this case */
     align-items: center;

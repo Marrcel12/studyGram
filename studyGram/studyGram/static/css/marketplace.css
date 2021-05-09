@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 * {
     font-family: 'Lato';
     /* Tu nunito */
@@ -80,7 +83,7 @@ nav, footer{
     width: 90%;
     margin: 10px auto;
     box-sizing: border-box;
-background-color: white;
+    background-color: white;
     text-align: center;
     box-shadow: 1px 1px 5px grey;
     border-radius: 5px;
@@ -112,6 +115,9 @@ background-color: white;
     max-width: 1000px;
     padding-bottom: 50px;
 }
+.productCard div, .productCard p{
+    margin: 0;
+}
 
 .productCard {
     height: 200px;
@@ -131,11 +137,8 @@ background-color: white;
     height: 190px;
     width: 190px;
     display: flex;
-    /* establish flex container */
     flex-direction: column;
-    /* stack flex items vertically */
     justify-content: center;
-    /* center items vertically, in this case */
     align-items: center;
 }
 
@@ -151,7 +154,7 @@ background-color: white;
     font-family: 'Milliard Medium';
 }
 
-.productAuthor {
+.productCard .productAuthor {
     font-size: 12px;
     margin-bottom: 10px;
 }
@@ -193,4 +196,57 @@ background-color: white;
 
 .like > img:hover {
     filter: opacity(.7)
+}
+.authorsTitleWrap{
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 30px auto 10px auto;
+    background-color: white;
+    text-align: center;
+    box-shadow: 1px 1px 5px grey;
+    border-radius: 5px; 
+    padding: 1px;
+}
+
+.authorsWrap{
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    box-sizing: border-box;
+    background-color: white;
+    text-align: center;
+    box-shadow: 1px 1px 5px grey;
+    border-radius: 5px; 
+    padding: 10px 0;
+    
+}
+.authorImg{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 2px solid #E69D90;
+    position: relative;
+    margin: 10px auto;
+}
+.authorImg>img{
+    height: 100px;
+}
+.authorTag{
+    font-family: 'Milliard SemiBold';
+    padding: 10px auto;
+}
+
+.divider{
+    width: 80%;
+    position: relative;
+    margin: 10px auto;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 50%,rgba(0,0,0,0) 100%);
 }

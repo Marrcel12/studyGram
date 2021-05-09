@@ -5,3 +5,6 @@ function submitForm(){
         document.getElementsByClassName('searchFieldForm')[0].submit();
     }
 }
+function scrollDown(){
+    window.scrollBy(0,window.innerHeight);
+}
