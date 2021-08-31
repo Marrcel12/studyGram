@@ -4,10 +4,52 @@ from django.shortcuts import render
 from .forms import SearchForm,FilterForm
 from django.http import HttpResponseRedirect
 from .models import *
+from rest_framework import viewsets
+from .serializers import *
 from django.db.models import Q
+# new API
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = product.objects.all()
+    serializer_class = productSerializer
+
+class photo_productsViewSet(viewsets.ModelViewSet):
+    queryset = photo_products.objects.all()
+    serializer_class = photo_productsSerializer
+
+class product_photoViewSet(viewsets.ModelViewSet):
+    queryset = product_photo.objects.all()
+    serializer_class = product_photoSerializer
+
+class levelViewSet(viewsets.ModelViewSet):
+    queryset = level.objects.all()
+    serializer_class = levelSerializer
+
+class subjectViewSet(viewsets.ModelViewSet):
+    queryset = subject.objects.all()
+    serializer_class = subjectSerializer
+
+class topicViewSet(viewsets.ModelViewSet):
+    queryset = topic.objects.all()
+    serializer_class = topicSerializer
+
+class subject_topicViewSet(viewsets.ModelViewSet):
+    queryset = subject.objects.all()
+    serializer_class = subject_topicSerializer
+
+class level_subject_topic_productViewSet(viewsets.ModelViewSet):
+    queryset = level_subject_topic_product.objects.all()
+    serializer_class = level_subject_topic_productSerializer
+
+class raiting_productsViewSet(viewsets.ModelViewSet):
+    queryset = raiting_products.objects.all()
+    serializer_class = raiting_productsSerializer
+
+class raitings_to_productViewSet(viewsets.ModelViewSet):
+    queryset = raitings_to_product.objects.all()
+    serializer_class = raitings_to_productSerializer
 # search
-
-
+# old code
 def best_products(number_to_retun, size_of_desc):
             ids_best_review = raiting_products.objects.order_by("value_number").values('id_raiting')[::-1]
             ids_best_review = ids_best_review[:number_to_retun]
@@ -23,7 +65,7 @@ def best_products(number_to_retun, size_of_desc):
                 tmp_product['description'] = tmp_product['description'][:size_of_desc]
                 to_return.append(tmp_product)
             return to_return
-# Create your views here.
+
 def start(request):
     context = {"search":None}
     context["levels"]=[i for i in level.objects.values('id_level','name')]
@@ -48,7 +90,7 @@ def start(request):
         context["search_res"] = []
         sting_model= {"level":level,"subject":subject,"topic":topic}
         query={"level": request.POST['levels'] if request.POST['levels'] !="" else None,"subject":request.POST['subjects'] if request.POST['subjects'] !="" else None,"topic":request.POST['topics'] if request.POST['topics']!="" else None}
-        
+
         # level
         product_ids=None
         if None not in list(query.values()):
@@ -62,13 +104,13 @@ def start(request):
             else:
                 print("errr")
                 context["warning"]="Nie mamy takich notatek"
-                return render(request, 'index.html', context) 
+                return render(request, 'index.html', context)
 
             if search_value !="":
                 part_string=search_value[:int(len(search_value)/2)]
                 search_res = product.objects.filter(
                 (Q(title__trigram_similar=search_value)| Q(description__trigram_similar=search_value) | Q( description__contains=part_string) | Q( title__contains=part_string)| Q( tags__contains=part_string)),product_id__in = product_ids)
-                
+
             else:
                   search_res = product.objects.filter(product_id__in = product_ids)
         else:
@@ -78,9 +120,9 @@ def start(request):
                 (Q(title__trigram_similar=search_value)| Q(description__trigram_similar=search_value) | Q( description__contains=part_string) | Q( title__contains=part_string)| Q( tags__contains=part_string)))
         context["search_result"]=search_res
     print(context)
-        
-      #    TODO: Give contnen  from search_res to contex
-    return render(request, 'index.html', context)   
-   
 
-    
+      #    TODO: Give contnen  from search_res to contex
+    return render(request, 'index.html', context)
+
+
+
